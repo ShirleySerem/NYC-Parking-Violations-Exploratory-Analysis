@@ -14,7 +14,7 @@ I installed pandas, numpy and matplotlib libraries.
 2. Perform exploratory data analysis on the imported dataset to identify invalid data.
 3. Show a simple plot that shows the number of parking violations issued for each vehicle year.
 4. Which year had the most vehicles issued with ticket violations?
-5. Which are the top 5 car brands with the highest violation tickets issued in New York State?
+5. Which are the top 5 car brands with the highest violation tickets issued with NY as the registration state?
 6. Which day has most tickets issued?
 
 ## Code Explanation
@@ -82,10 +82,34 @@ Q4. **Which year had the most vehicles issued with ticket violations?**
 >`plt.title('Vehicle Year');`
 
 
-Q5. **Which are the top 5 car brands with the highest violation tickets issued in New York State?**
+Q5. **Which are the top 5 car brands with the highest violation tickets issued with NY as the registration state?**
+
+>#create a New York dataframe
+>
+>`new_york_df = df[df['Registration State'] == 'NY']` 
+>
+>`new_york_df`
+>
+>#check the top 5 cars in New York with highest total violation tickets
+>
+>`new_york_top_cars = new_york_df['Vehicle Make'].value_counts().head()`
+>
+>`new_york_top_cars.plot(kind='bar', title='Top 5 Vehicle Make in New York', x='Vehicle Make', y='Number of Violation Tickets')`
 
 
+Q6. **Which day has most tickets issued?**
 
+>`days = df['Issue Day'].value_counts().sort_values()`
+>
+>`plt.plot(days)`
+>
+>`plt.title('Violation ticket per day')`
+>
+>`plt.xlabel('Day Name')`
+>
+>`plt.ylabel('Number of Violation tickets')`
+>
+>`plt.show()`
 
 ## Author
 Shirley Serem
